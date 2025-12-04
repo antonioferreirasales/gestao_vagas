@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.com.sales.gestao_vagas.exceptions.UserFoundException;
 import br.com.sales.gestao_vagas.modules.candidate.CandidateEntity;
-import br.com.sales.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.sales.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
 import jakarta.validation.Valid;
 
 @RestController
@@ -16,17 +15,11 @@ import jakarta.validation.Valid;
 public class CandidateController {
 
     @Autowired
-    private CandidateRepository candidateRepository;
+    private CreateCandidateUseCase createCandidateUseCase;
 
     @PostMapping("/")
     public CandidateEntity create(@Valid @RequestBody CandidateEntity candidateEntity) {
-        this.candidateRepository
-                .findByUsernameOrEmail(candidateEntity.getName(), candidateEntity.getEmail())
-                .ifPresent(user -> {
-                    throw new UserFoundException();
-                });
-
-        return this.candidateRepository.save(candidateEntity);
+        return this.createCandidateUseCase.execute(candidateEntity);
     }
 
 }

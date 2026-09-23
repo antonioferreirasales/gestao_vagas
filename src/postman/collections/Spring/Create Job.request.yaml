@@ -1,0 +1,22 @@
+$kind: http-request
+url: http://localhost:8081/job
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \r
+
+    \    \"description\": \"Vaga para pessoa desenvolvedora Java com conhecimentos em Spring Boot 3.0\",\r
+
+    \    \"benefits\": \"Gympass, Plano de Saúde, Day off\",\r
+
+    \    \"level\": \"Junior\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJKYXZhZ2FzIiwiZXhwIjoxNzg4NTU3NzEzLCJzdWIiOiJjMTg5MzU0ZS1lMWY0LTQ1ZTQtYjA1Yi00MjE0MTFiY2UwNzMifQ.XeeYQjPKlc2GaSzIMVMOat3-rwy1zpRtcMC7gzijSWw
+settings: {}
+order: 2000

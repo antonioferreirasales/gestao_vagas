@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://localhost:8081/auth/company
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"username\": \"java_company\",\r
+
+    \    \"password\": \"123456789\"\r
+
+    }"
+settings: {}
+order: 4000

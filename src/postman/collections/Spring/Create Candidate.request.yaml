@@ -1,0 +1,26 @@
+$kind: http-request
+url: http://localhost:8081/candidate
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"name\": \"Carlos\",\r
+
+    \    \"username\": \"Carloslopes\",\r
+
+    \    \"email\": \"carloslopes@gmail\",\r
+
+    \    \"password\": \"carlos12345\",\r
+
+    \    \"description\": \"Provicional em Java\",\r
+
+    \    \"curriculum\": \"pdf.com\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJKYXZhZ2FzIiwiZXhwIjoxNzg4NTU3NzEzLCJzdWIiOiJjMTg5MzU0ZS1lMWY0LTQ1ZTQtYjA1Yi00MjE0MTFiY2UwNzMifQ.XeeYQjPKlc2GaSzIMVMOat3-rwy1zpRtcMC7gzijSWw
+settings: {}
+order: 3000

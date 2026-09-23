@@ -23,7 +23,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/candidate", "/candidate/").permitAll()
                             .requestMatchers("/company", "/company/").permitAll()
-                            .requestMatchers("/auth/company", "/auth/company/").permitAll();
+                            .requestMatchers("/auth/company", "/auth/company/").permitAll()
+                            .requestMatchers("/auth/candidate", "/auth/candidate/").permitAll();
                     auth.anyRequest().authenticated();
                 }).addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
         return http.build();

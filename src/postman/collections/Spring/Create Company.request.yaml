@@ -1,0 +1,26 @@
+$kind: http-request
+url: http://localhost:8081/company/
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \r
+
+    \    \"name\": \"Java Jobs\",\r
+
+    \    \"username\": \"java_company\",\r
+
+    \    \"email\": \"ja@company.com.br\",\r
+
+    \    \"password\": \"123456789\",\r
+
+    \    \"description\": \"Empresa responsável por vagas de Java\",\r
+
+    \    \"website\":\"https://javajobs.com.br\",\r
+
+    \    \"curriculum\": \"curriculum\"\r
+
+    }"
+settings: {}
+order: 1000

@@ -1,0 +1,7 @@
+workspace:
+  id: ab0b7784-8f87-4ee1-8184-594ba6d0d15c
+cloudResources:
+  collections:
+    ../postman/collections/Spring: 22440342-dccfedef-da48-4f9c-8314-9d016af334c8
+  globals:
+    ../postman/globals/workspace.globals.yaml: 95d1290a-f38a-4397-8797-f38fe6b96cfa

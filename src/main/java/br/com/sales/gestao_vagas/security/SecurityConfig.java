@@ -12,9 +12,11 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 public class SecurityConfig {
     private final SecurityFilter securityFilter;
+    private final SecurityCandidateFilter securityCandidateFilter;
 
-    SecurityConfig(SecurityFilter securityFilter) {
+    SecurityConfig(SecurityFilter securityFilter, SecurityCandidateFilter securityCandidateFilter) {
         this.securityFilter = securityFilter;
+        this.securityCandidateFilter = securityCandidateFilter;
     }
 
     @Bean
@@ -26,7 +28,10 @@ public class SecurityConfig {
                             .requestMatchers("/auth/company", "/auth/company/").permitAll()
                             .requestMatchers("/auth/candidate", "/auth/candidate/").permitAll();
                     auth.anyRequest().authenticated();
-                }).addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
+                })
+                .addFilterBefore(securityCandidateFilter, BasicAuthenticationFilter.class)
+                .addFilterBefore(securityFilter, BasicAuthenticationFilter.class);
+
         return http.build();
     }
 

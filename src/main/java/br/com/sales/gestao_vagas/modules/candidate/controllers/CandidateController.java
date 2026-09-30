@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -22,11 +23,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/candidate")
 public class CandidateController {
 
-    @Autowired
-    private CreateCandidateUseCase createCandidateUseCase;
+    private final CreateCandidateUseCase createCandidateUseCase;
 
-    @Autowired
-    private ProfileCandidateUseCase profileCandidateUseCase;
+    private final ProfileCandidateUseCase profileCandidateUseCase;
+
+    CandidateController(ProfileCandidateUseCase profileCandidateUseCase,
+            CreateCandidateUseCase createCandidateUseCase) {
+        this.profileCandidateUseCase = profileCandidateUseCase;
+        this.createCandidateUseCase = createCandidateUseCase;
+    }
 
     @PostMapping("")
     public ResponseEntity<Object> create(@Valid @RequestBody CandidateEntity candidateEntity) {
@@ -39,6 +44,7 @@ public class CandidateController {
     }
 
     @GetMapping("")
+    @PreAuthorize("hasRole('CANDIDATE')")
     public ResponseEntity<Object> get(HttpServletRequest request) {
         var idCandidate = request.getAttribute("candidate_id");
         try {
